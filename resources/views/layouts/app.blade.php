@@ -19,7 +19,7 @@
             <a class="p-2 text-dark" href="{{ route('home.index') }}">Home</a>
             <a class="p-2 text-dark" href="{{ route('home.contact') }}">Contact</a>
             <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog Posts</a>
-            <a class="p-2 text-dark" href="{{ route('posts.create') }}">Creat Post</a>
+            <a class="p-2 text-dark" href="{{ route('posts.create') }}">Create Post</a>
         </nav>
     </div>
     <div class="container">
