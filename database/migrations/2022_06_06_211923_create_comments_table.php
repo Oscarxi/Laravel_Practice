@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilesTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,24 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
-            $table->unsignedInteger('author_id')->unique();
-            $table->foreign('author_id')->references('id')->on('authors');  # foreign key refers to id on authors table
+            $table->text('content');
+
+            $table->unsignedInteger('blog_post_id')->index();
+            $table->foreign('blog_post_id')->references('id')->on('blog_posts');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
+     *s
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('comments');
     }
 }
