@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateBlogPostTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,26 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('blog_post_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-
-            $table->text('content');
 
             $table->unsignedInteger('blog_post_id')->index();
             $table->foreign('blog_post_id')->references('id')->on('blog_posts')->onDelete('cascade');
+
+            $table->unsignedInteger('tag_id')->index();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *s
+     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('blog_post_tag');
     }
 }

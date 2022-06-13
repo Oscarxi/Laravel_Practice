@@ -8,13 +8,13 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <title>Laravel App - @yield('title')</title>
+    <title>Laravel Blog - @yield('title')</title>
 </head>
 
 <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm mb-3">
         {{-- create, vertical, ≥768px horizontal, align, padding size, ≥768px padding size, background color, border, shadow, bottom sapce --}}
-        <h5 class="my-0 mr-md-auto font-wight-normal">Laravel App</h5>{{-- vertical space, ≥768px horiziontal space, text size --}}
+        <h5 class="my-0 mr-md-auto font-wight-normal">Laravel Blog</h5>{{-- vertical space, ≥768px horiziontal space, text size --}}
         <nav class="my-2 my-md-zero mr-md-3">{{-- vertical space, ≥768px vertical space, ≥768px right space --}}
             <a class="p-2 text-dark" href="{{ route('home.index') }}">Home</a>
             <a class="p-2 text-dark" href="{{ route('home.contact') }}">Contact</a>
