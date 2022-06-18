@@ -16,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/', [HomeController::class, 'home'])
+-> name('home.index');
+
+Route::get('/contact', [HomeController::class, 'contact'])
+-> name('home.contact');
+
+Route::resource('posts', PostsController::class);
+
+Auth::routes();
+
 // Original Version
 // Route::get('/', function () {
 //     return view('home.index', []);
@@ -25,16 +36,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/contact', function(){
 //     return view('home.contact', []);
 // }) -> name('home.contact');
-
-Route::get('/', [HomeController::class, 'home'])
-    -> name('home.index');
-
-Route::get('/contact', [HomeController::class, 'contact'])
-    -> name('home.contact');
-
-Route::get('/single', AboutController::class);
-
-Route::resource('posts', PostsController::class);
 
 // Route::get('/posts', function() use ($posts){
 //     dd((int)request() -> query('page', 1));
@@ -48,9 +49,9 @@ Route::resource('posts', PostsController::class);
 //     return view('posts.show', ['post' => $posts[$id]]);
 // }) -> name('posts.show');
 
-Route::get('/recent-posts/{days_ago?}', function($daysAgo = 20){
-    return 'Posts from ' .$daysAgo. ' days ago';
-}) -> name('posts.recent.index') -> middleware(('auth'));
+// Route::get('/recent-posts/{days_ago?}', function($daysAgo = 20){
+//     return 'Posts from ' .$daysAgo. ' days ago';
+// }) -> name('posts.recent.index') -> middleware(('auth'));
 
 // Route::prefix('/fun') -> name('fun.') -> group(function() use ($posts){
 //     Route::get('/responses', function() use ($posts){
