@@ -53,7 +53,8 @@ class PostTest extends TestCase
             'content' => 'Valid content'
         ];
 
-        $this->post('/posts', $arguments)
+        $this->actingAs($this->user())
+            ->post('/posts', $arguments)
             ->assertStatus(302)
             ->assertSessionHas('status');
 
@@ -67,7 +68,8 @@ class PostTest extends TestCase
             'content' => 's'
         ];
 
-        $this->post('/posts', $arguments)
+        $this->actingAs($this->user())
+            ->post('/posts', $arguments)
             ->assertStatus(302)
             ->assertSessionHas('errors');
 
@@ -91,7 +93,8 @@ class PostTest extends TestCase
             'content' => 'Update content'
         ];
 
-        $this->put("/posts/{$post->id}", $arguments)
+        $this->actingAs($this->user())
+            ->put("/posts/{$post->id}", $arguments)
             ->assertStatus(302)
             ->assertSessionHas('status');
 
@@ -117,7 +120,8 @@ class PostTest extends TestCase
             'content' => 'New content'
         ]);
 
-        $this->delete("/posts/{$post->id}")
+        $this->actingAs($this->user())
+            ->delete("/posts/{$post->id}")
             ->assertStatus(302)
             ->assertSessionHas('status');
 
