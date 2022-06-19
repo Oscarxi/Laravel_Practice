@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogPostsTable extends Migration
+class AddUserToBlogPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateBlogPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-
-            $table->string('title')->default('');
-
+        Schema::table('blog_posts', function (Blueprint $table) {
             if (env('DB_CONNECTION') === 'sqlite_testing'){
-                $table->text('content')->default('');
+                $table->unsignedInteger('user_id')->default(0);
             } else {
-                $table->text('content');
+                $table->unsignedInteger('user_id');
             }
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -34,6 +31,9 @@ class CreateBlogPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_posts');
+        Schema::table('blog_posts', function (Blueprint $table) {
+            $table->foreign('user_id');
+            $table->dropColumn('user_id');
+        });
     }
 }
