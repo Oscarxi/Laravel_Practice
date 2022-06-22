@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class AddUserToBlogPostsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('blog_posts', function (Blueprint $table) {
@@ -24,15 +19,10 @@ class AddUserToBlogPostsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('blog_posts', function (Blueprint $table) {
-            $table->foreign('user_id');
+            $table->dropForeign(['user_id']);
             $table->dropColumn('user_id');
         });
     }
