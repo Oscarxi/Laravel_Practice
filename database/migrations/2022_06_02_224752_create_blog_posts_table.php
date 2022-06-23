@@ -21,13 +21,9 @@ class CreateBlogPostsTable extends Migration
 
             if (env('DB_CONNECTION') === 'sqlite_testing'){
                 $table->text('content')->default('');
-                $table->unsignedInteger('user_id')->default(0);
             } else {
                 $table->text('content');
-                $table->unsignedInteger('user_id');
             }
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
