@@ -24,15 +24,11 @@ class CreateCommentsTable extends Migration
             }
 
             $table->unsignedInteger('blog_post_id')->index();
-            $table->foreign('blog_post_id')->references('id')->on('blog_posts')->onDelete('cascade');
+            $table->foreign('blog_post_id')->references('id')->on('blog_posts');
+            // ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *s
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('comments');
