@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePost;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -45,8 +46,9 @@ class PostsController extends Controller
      */
     public function store(StorePost $request)
     {
-        $validated = $request -> validated();
-        $post = BlogPost::create($validated);
+        $validatedData = $request -> validated();
+        $validatedData['user_id'] = $request->user()->id;
+        $post = BlogPost::create($validatedData);
 
         $request -> session() -> flash('status', 'The blog post was created!');
 

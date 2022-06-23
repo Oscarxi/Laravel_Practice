@@ -15,6 +15,7 @@ class AddUserToBlogPostsTable extends Migration
                 $table->unsignedInteger('user_id');
             }
 
+            // $table->foreignId('user_id')->constrained();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
