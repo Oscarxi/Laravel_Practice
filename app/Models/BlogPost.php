@@ -16,12 +16,17 @@ class BlogPost extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\Tag')->withTimestamps();
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
     // public static function boot()

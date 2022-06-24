@@ -13,7 +13,7 @@ class Comment extends Model
 
     public function blogPost()
     {
-        return $this->belongsTo('App\Models\BlogPost');
+        return $this->belongsTo(BlogPost::class);
         // return $this->belongsTo('App\BlogPost', 'post_id', 'blog_post_id');
         // Second parameter for changing the name of foreign key
 
