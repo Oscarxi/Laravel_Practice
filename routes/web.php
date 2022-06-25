@@ -24,6 +24,10 @@ Route::get('/', [HomeController::class, 'home'])
 Route::get('/contact', [HomeController::class, 'contact'])
     -> name('home.contact');
 
+Route::get('/admin', [HomeController::class, 'admin'])
+    -> name('home.admin')
+    -> middleware('can:home.admin');
+
 Route::resource('posts', PostsController::class);
 
 Auth::routes();
