@@ -8,7 +8,7 @@
     <p>Added {{ $post->created_at->diffForHumans() }}</p>
 
     @if (now()->diffInMinutes($post->created_at) < 5)
-    <div class="alert alert-info">New!</div>
+        <x-alert type="primary" message='New!'/>
     @endif
 
     <h4>Comments</h4>

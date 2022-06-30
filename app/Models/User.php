@@ -11,12 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $guarded =[];
-    // protected $fillable = [
-    //     'name',
-    //     'email',
-    //     'password',
-    // ];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
     protected $hidden = [
         'password',
@@ -27,7 +26,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function blogPosts(){
+    public function blogPosts()
+    {
         return $this->hasMany(BlogPost::class);
     }
 }

@@ -11,8 +11,7 @@ class BlogPost extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $guarded =[];
-    // protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'user_id'];
 
     public function comments()
     {
