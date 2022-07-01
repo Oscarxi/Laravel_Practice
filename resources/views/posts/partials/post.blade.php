@@ -1,6 +1,7 @@
 <h3><a href="{{ route('posts.show', ['post' => $post->id]) }}" class="text-primary">{{ $post->title }}</a></h3>
 @component('components.tags', ['tags' => $post->tags])
 @endcomponent
+
 @component('components.updated', ['date' => $post->created_at, 'name' => $post->user->name])
 @endcomponent
 

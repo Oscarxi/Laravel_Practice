@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::component('package-alert', Alert::class);
-        Blade::component('package-updated', Updated::class);
-        Blade::component('package-tags', Tags::class);
+        // Blade::component('package-alert', Alert::class);
+        // Blade::component('package-updated', Updated::class);
+        // Blade::component('package-tags', Tags::class);
     }
 }

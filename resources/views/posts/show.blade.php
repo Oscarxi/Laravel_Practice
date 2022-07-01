@@ -12,8 +12,11 @@
         Updated
     @endcomponent
 
+    @component('components.tags', ['tags' => $post->tags])
+    @endcomponent
+
     @if (now()->diffInMinutes($post->created_at) < 10)
-        <x-alert type="info" message='New!'/>
+        <x-alert type='info' message='New!'/>
     @endif
 
     <h4 class="text-info">Comments</h4>

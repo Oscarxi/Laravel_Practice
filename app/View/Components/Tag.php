@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Tags extends Component
+class Tag extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class Tags extends Component
      */
     public function render()
     {
-        return view('components.tags');
+        return view('components.tag');
     }
 }
