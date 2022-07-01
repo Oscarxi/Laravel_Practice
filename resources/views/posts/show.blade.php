@@ -5,16 +5,22 @@
 @section('content')
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->content }}</p>
-    <p>Added {{ $post->created_at->diffForHumans() }}</p>
+    @component('components.updated', ['date' => $post->created_at, 'name' => $post->user->name])
+    @endcomponent
 
-    @if (now()->diffInMinutes($post->created_at) < 5)
-        <x-alert type="primary" message='New!'/>
+    @component('components.updated', ['date' => $post->updated_at])
+        Updated
+    @endcomponent
+
+    @if (now()->diffInMinutes($post->created_at) < 10)
+        <x-alert type="info" message='New!'/>
     @endif
 
-    <h4>Comments</h4>
+    <h4 class="text-info">Comments</h4>
     @forelse ($post->comments as $comment)
-        <p>{{ $comment->content }},</p>
-        <p class="text-muted">added {{ $comment->created_at->diffForHumans() }}</p>
+        <p>{{ $comment->content }}</p>
+        @component('components.updated', ['date' => $comment->created_at])
+        @endcomponent
     @empty
         <p>No comments yet!</p>
     @endforelse
